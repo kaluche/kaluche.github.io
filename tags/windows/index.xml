@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>windows on Kaluche</title>
+    <link>https://kaluche.github.io/tags/windows/</link>
+    <description>Recent content in windows on Kaluche</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 08 Feb 2020 17:21:41 +0100</lastBuildDate>
+    
+	<atom:link href="https://kaluche.github.io/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Powershell</title>
+      <link>https://kaluche.github.io/posts/2020/02/powershell/</link>
+      <pubDate>Sat, 08 Feb 2020 17:21:41 +0100</pubDate>
+      
+      <guid>https://kaluche.github.io/posts/2020/02/powershell/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Oneliners/commands for powershell.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Impacket</title>
+      <link>https://kaluche.github.io/posts/2020/02/impacket/</link>
+      <pubDate>Sat, 01 Feb 2020 17:05:59 +0100</pubDate>
+      
+      <guid>https://kaluche.github.io/posts/2020/02/impacket/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Just some Impacket commands reminder.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

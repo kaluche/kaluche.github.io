@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://kaluche.github.io/</loc>
+    <lastmod>2020-02-08T17:21:41+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kaluche.github.io/posts/</loc>
+    <lastmod>2020-02-08T17:21:41+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kaluche.github.io/posts/2020/02/powershell/</loc>
+    <lastmod>2020-02-08T17:21:41+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kaluche.github.io/tags/powershell/</loc>
+    <lastmod>2020-02-08T17:21:41+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kaluche.github.io/tags/</loc>
+    <lastmod>2020-02-08T17:21:41+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kaluche.github.io/tags/windows/</loc>
+    <lastmod>2020-02-08T17:21:41+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kaluche.github.io/posts/2020/02/impacket/</loc>
+    <lastmod>2020-02-01T17:05:59+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kaluche.github.io/tags/impacket/</loc>
+    <lastmod>2020-02-01T17:05:59+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kaluche.github.io/about/</loc>
+    <lastmod>2020-01-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kaluche.github.io/categories/</loc>
+  </url>
+  
+</urlset>

