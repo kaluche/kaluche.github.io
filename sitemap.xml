@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://kaluche.github.io/posts/2020/09/dumping-credentials-offline/</loc>
+    <lastmod>2020-09-01T14:01:17+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kaluche.github.io/posts/2020/02/powershell/</loc>
     <lastmod>2020-02-08T17:21:41+01:00</lastmod>
   </url>
@@ -23,6 +28,12 @@
   </url>
   
   <url>
+    <loc>https://kaluche.github.io/tags/credentials/</loc>
+    <lastmod>2020-09-01T14:01:17+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kaluche.github.io/tags/impacket/</loc>
     <lastmod>2020-02-01T17:05:59+01:00</lastmod>
     <priority>0</priority>
@@ -30,13 +41,13 @@
   
   <url>
     <loc>https://kaluche.github.io/</loc>
-    <lastmod>2020-02-08T17:21:41+01:00</lastmod>
+    <lastmod>2020-09-01T14:01:17+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kaluche.github.io/posts/</loc>
-    <lastmod>2020-02-08T17:21:41+01:00</lastmod>
+    <lastmod>2020-09-01T14:01:17+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -48,13 +59,13 @@
   
   <url>
     <loc>https://kaluche.github.io/tags/</loc>
-    <lastmod>2020-02-01T17:05:59+01:00</lastmod>
+    <lastmod>2020-09-01T14:01:17+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kaluche.github.io/tags/windows/</loc>
-    <lastmod>2020-02-08T17:21:41+01:00</lastmod>
+    <lastmod>2020-09-01T14:01:17+02:00</lastmod>
     <priority>0</priority>
   </url>
   

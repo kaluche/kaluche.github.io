@@ -6,10 +6,21 @@
     <description>Recent content in Windows on Kaluche</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 08 Feb 2020 17:21:41 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2020 14:01:17 +0200</lastBuildDate>
     
 	<atom:link href="https://kaluche.github.io/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dumping credentials (offline)</title>
+      <link>https://kaluche.github.io/posts/2020/09/dumping-credentials-offline/</link>
+      <pubDate>Tue, 01 Sep 2020 14:01:17 +0200</pubDate>
+      
+      <guid>https://kaluche.github.io/posts/2020/09/dumping-credentials-offline/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Dumping creds for offline analysis&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
     
     <item>
       <title>Powershell</title>

