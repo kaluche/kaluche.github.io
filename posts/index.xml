@@ -16,10 +16,10 @@
             
             <guid>https://kaluche.github.io/posts/2020/09/dumping-credentials-offline/</guid>
             <description>&lt;blockquote&gt;
-&lt;p&gt;Dumping creds for offline analysis&lt;/p&gt;
+&lt;p&gt;How to dump creds for offline analysis (lsass, sam, lsa secret, cached domain, &amp;hellip;)&lt;/p&gt;
 &lt;/blockquote&gt;</description>
             <content type="html"><![CDATA[<blockquote>
-<p>Dumping creds for offline analysis</p>
+<p>How to dump creds for offline analysis (lsass, sam, lsa secret, cached domain, &hellip;)</p>
 </blockquote>
 
 <h2 id="registry-hives-sam-lsa-secrets-cached-domain">Registry Hives (SAM/LSA Secrets/Cached Domain)</h2>
@@ -144,10 +144,10 @@ rundll32.exe  C<span style="color:#960050;background-color:#1e0010">:</span>\Use
             
             <guid>https://kaluche.github.io/posts/2020/02/powershell/</guid>
             <description>&lt;blockquote&gt;
-&lt;p&gt;Oneliners/commands for powershell.&lt;/p&gt;
+&lt;p&gt;Oneliners / commands for powershell.&lt;/p&gt;
 &lt;/blockquote&gt;</description>
             <content type="html"><![CDATA[<blockquote>
-<p>Oneliners/commands for powershell.</p>
+<p>Oneliners / commands for powershell.</p>
 </blockquote>
 
 <h2 id="base64">Base64</h2>
@@ -181,10 +181,10 @@ rundll32.exe  C<span style="color:#960050;background-color:#1e0010">:</span>\Use
             
             <guid>https://kaluche.github.io/posts/2020/02/impacket/</guid>
             <description>&lt;blockquote&gt;
-&lt;p&gt;Just some Impacket commands reminder.&lt;/p&gt;
+&lt;p&gt;Just some Impacket commands reminder (secretsdump, generate a golden ticket, kerberoast, &amp;hellip;).&lt;/p&gt;
 &lt;/blockquote&gt;</description>
             <content type="html"><![CDATA[<blockquote>
-<p>Just some Impacket commands reminder.</p>
+<p>Just some Impacket commands reminder (secretsdump, generate a golden ticket, kerberoast, &hellip;).</p>
 </blockquote>
 
 <h2 id="dc-hashs-ntlm-dump-history">DC : hashs NTLM dump, history</h2>
