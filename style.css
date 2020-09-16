@@ -82,3 +82,7 @@ body.dark-theme {
    border-left-color: crimson; 
 }
 
+.dark-theme code {
+    white-space: pre-line;
+    line-break: anywhere;
+}
